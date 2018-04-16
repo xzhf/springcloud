@@ -1,12 +1,10 @@
 #spring.cloud.config.env=default
-app:
-  name: provider
 spring:
   application:
-    name: ${app.name}
+    name: consumer
   cloud:
       config:
+        name: provider
         profile: dev
         label: master
-        application: ${app.name}
         uri: http://localhost:7000/configServer
