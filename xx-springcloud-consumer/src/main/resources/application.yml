@@ -1,5 +1,5 @@
 server:
-  context-path: /ibh
+  context-path: /consumer
   port: 7004
 
 eureka:
