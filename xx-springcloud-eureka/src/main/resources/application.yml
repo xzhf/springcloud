@@ -1,0 +1,19 @@
+server:
+  port: 7002
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+#不作为客户端 不注册自己
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+#    instance: instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+#关闭自我保护
+  server:
+    enable-self-preservation: false
+#清理无效节点时间间隔
+    eviction-interval-timer-in-ms: 60000

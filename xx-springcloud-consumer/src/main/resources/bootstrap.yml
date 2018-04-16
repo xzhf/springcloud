@@ -1,0 +1,12 @@
+#spring.cloud.config.env=default
+app:
+  name: springboot.ibh
+spring:
+  application:
+    name: ${app.name}
+  cloud:
+      config:
+        profile: dev
+        label: master
+        application: ${app.name}
+        uri: http://localhost:7000/configServer
