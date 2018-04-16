@@ -1,6 +1,6 @@
 #spring.cloud.config.env=default
 app:
-  name: springboot.ibh
+  name: provider
 spring:
   application:
     name: ${app.name}
