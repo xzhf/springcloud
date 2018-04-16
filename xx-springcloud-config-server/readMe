@@ -1,0 +1,2 @@
+config server 配置管理服务端，可以获取数据库、git、SVN上的配置文件信息；本例提供获取mysql、git上配置文件两种方式，
+以application.yml中的spring.cloud.config.server.database配置作为mysql开关。
