@@ -7,6 +7,7 @@ spring:
     name: provider
   cloud:
       config:
+        name: provider
         profile: dev
         label: master
         uri: http://localhost:7000/configServer
