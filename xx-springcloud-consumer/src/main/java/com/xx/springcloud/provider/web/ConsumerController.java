@@ -6,7 +6,6 @@ package com.xx.springcloud.provider.web;
  * 复制、修改或发布本软件.
  ******************************************************************************/
 
-import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -30,12 +29,12 @@ public class ConsumerController {
     @Autowired
     private Environment env;
 
-    @Value("${url}")
-    private String getInfoByBizIdUrl;
+    @Value("${provider.server}")
+    private String consumerServer;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String getInfoByBizId(@PathVariable String id) {
-        String url = getInfoByBizIdUrl + id;
+        String url = consumerServer + id;
         return restTemplate.getForObject(url, String.class);
     }
 }
