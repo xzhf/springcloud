@@ -3,7 +3,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/xzhf/testSpringcloud.git
+          uri: https://github.com/xzhf/springcloud.git
           search-paths: config
 #          username: xzhf
 #          password:
