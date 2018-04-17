@@ -1,0 +1,1 @@
+服务消费者，分别使用ribbon+restTemplate和feign（默认集成ribbon）的方式调用提供者接口
