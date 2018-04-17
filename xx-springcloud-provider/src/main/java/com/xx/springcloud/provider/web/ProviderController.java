@@ -1,10 +1,4 @@
 package com.xx.springcloud.provider.web;
-/******************************************************************************
- * Copyright (C) 2017 ShenZhen ComTop Information Technology Co.,Ltd
- * All Rights Reserved.
- * 本软件为深圳康拓普开发研制。未经本公司正式书面同意，其他任何个人、团体不得使用、
- * 复制、修改或发布本软件.
- ******************************************************************************/
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
