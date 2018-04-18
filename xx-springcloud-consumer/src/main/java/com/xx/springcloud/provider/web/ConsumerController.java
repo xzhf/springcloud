@@ -1,13 +1,10 @@
 package com.xx.springcloud.provider.web;
 
 import com.xx.springcloud.provider.feign.ConsumerFeignClient;
+import com.xx.springcloud.provider.rest.template.ConsumerRestTemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
-
-import java.util.Map;
 
 /**
  * @author xuzhifan
@@ -18,22 +15,19 @@ import java.util.Map;
 @RequestMapping("/")
 public class ConsumerController {
 
-    @Autowired
-    private RestTemplate restTemplate;
+
     @Autowired
     private ConsumerFeignClient feignClient;
+    @Autowired
+    private ConsumerRestTemplateService restTempService;
 
     @Autowired
     private Environment env;
 
-    @Value("${provider.server}")
-    private String consumerServer;
-
     @RequestMapping(value = "/rest/{id}", method = RequestMethod.GET)
     public String getByRestTmp(@PathVariable String id) {
-        //地址要加上provider的context
-        String url = consumerServer + id;
-        return restTemplate.getForObject(url, String.class);
+
+        return restTempService.getInfoById(id);
     }
 
     @RequestMapping(value = "/feign/{id}", method = RequestMethod.GET)
@@ -41,4 +35,6 @@ public class ConsumerController {
 
         return feignClient.getInfoById(id);
     }
+
+
 }

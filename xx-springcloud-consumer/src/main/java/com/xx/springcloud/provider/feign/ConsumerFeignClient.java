@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @version 1.0
  * @since 2018/4/17
  */
-@FeignClient(name = "provider")
+@FeignClient(name = "provider", fallback = ConsumerFeignClientHystrix.class)
 public interface ConsumerFeignClient {
 
     //@PathVariable(value = "id") 注解要有value 不然报错；地址要加上provider的context
