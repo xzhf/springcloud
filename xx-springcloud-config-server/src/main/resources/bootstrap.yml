@@ -1,9 +1,25 @@
 spring:
-  cloud:
-    config:
-      server:
-        git:
-          uri: https://github.com/xzhf/springcloud.git
-          search-paths: config
-#          username: xzhf
-#          password:
+    cloud:
+        config:
+            server:
+              #git config配置
+              git:
+                uri: https://github.com/xzhf/springcloud.git
+                search-paths: config
+                #username: xzhf
+                #password:
+              #配置开关true-开 false-关(使用git)
+              database: true
+    #mysql config连接配置
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        initial-size: 5
+        max-idle: 10
+        max-wait: 10000
+        min-idle: 5
+        password: 123456
+        url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+        username: root
+    jpa:
+        hibernate:
+            ddl-auto: update
