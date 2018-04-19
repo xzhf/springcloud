@@ -1,10 +1,11 @@
 server:
   context-path: /provider
-  port: 7003
+  port: 7005
 
 spring:
   application:
     name: provider
+  #config server配置
   cloud:
       config:
         name: provider
