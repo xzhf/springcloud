@@ -1,4 +1,4 @@
-package com.xx.springcloud.provider.feign;
+package com.xx.springcloud.consumer.feign;
 
 import org.springframework.stereotype.Component;
 

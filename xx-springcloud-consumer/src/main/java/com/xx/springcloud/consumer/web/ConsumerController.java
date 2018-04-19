@@ -1,7 +1,7 @@
-package com.xx.springcloud.provider.web;
+package com.xx.springcloud.consumer.web;
 
-import com.xx.springcloud.provider.feign.ConsumerFeignClient;
-import com.xx.springcloud.provider.rest.template.ConsumerRestTemplateService;
+import com.xx.springcloud.consumer.feign.ConsumerFeignClient;
+import com.xx.springcloud.consumer.rest.template.ConsumerRestTemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.xx.springcloud.provider.rest.template;
+package com.xx.springcloud.consumer.rest.template;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;

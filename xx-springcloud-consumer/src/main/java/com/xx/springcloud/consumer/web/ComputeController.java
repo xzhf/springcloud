@@ -1,4 +1,4 @@
-package com.xx.springcloud.provider.web;
+package com.xx.springcloud.consumer.web;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

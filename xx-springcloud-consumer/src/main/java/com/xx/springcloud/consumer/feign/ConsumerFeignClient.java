@@ -1,4 +1,4 @@
-package com.xx.springcloud.provider.feign;
+package com.xx.springcloud.consumer.feign;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
