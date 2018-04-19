@@ -1,1 +1,2 @@
-服务消费者，分别使用ribbon+restTemplate和feign（默认集成ribbon）的方式调用提供者接口，同时集成hystrix对不可用的服务进行熔断
+服务消费者，分别使用ribbon+restTemplate和feign（默认集成ribbon）的方式调用提供者接口，同时集成hystrix对不可用的服务进行熔断;
+服务中通过config server获取restTemplate调用的服务提供者地址，当config有更新时通过post /refresh接口更新config（引用config的类要加上@RefreshScope注解ConsumerRestTemplateService）

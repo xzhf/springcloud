@@ -3,6 +3,7 @@ package com.xx.springcloud.provider.rest.template;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -11,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
  * @version 1.0
  * @since 2018/4/17
  */
+@RefreshScope
 @Service
 public class ConsumerRestTemplateService {
 
