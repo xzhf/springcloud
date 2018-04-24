@@ -1,0 +1,19 @@
+debug: false
+
+server:
+  context-path: /
+  port: 7006
+
+zuul:
+  routes:
+    consumer:
+      path: /consumer/**
+      #url: http://localhost:7004/consumer/
+      serviceId: CONSUMER
+      #是否去掉代理前缀（consumer）
+      stripPrefix: false
+  host:
+    #总连接数
+    max-total-connections: 200
+    #每个路由连接数
+    max-per-route-connections: 20
