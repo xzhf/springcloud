@@ -83,7 +83,7 @@
                         </resource>
                     </resources>
                     <exposes>
-                        <expose>7003</expose>
+                        <expose>7005</expose>
                     </exposes>
                     <cmd>["sudo", "mkdir", "logs"]</cmd>
                     <entryPoint>["java", "-jar", "${project.build.finalName}.jar"]</entryPoint>
