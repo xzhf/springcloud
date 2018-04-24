@@ -1,4 +1,40 @@
 spring:
+  profiles:
+    active: test
+---
+spring:
+    profiles: dev
+    cloud:
+        config:
+            server:
+              #配置开关true-开 false-关(使用git)
+              database: true
+    #mysql config连接配置
+    datasource:
+        username: root
+        password: 123456
+        url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    jpa:
+        hibernate:
+            ddl-auto: update
+---
+spring:
+    profiles: test
+    cloud:
+        config:
+            server:
+              #配置开关true-开 false-关(使用git)
+              database: true
+    #mysql config连接配置
+    datasource:
+        username: crlandmf
+        password: 123456
+        url: jdbc:mysql://10.10.110.218:3306/test_xx?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    jpa:
+        hibernate:
+            ddl-auto: update
+---
+spring:
     cloud:
         config:
             server:
@@ -6,10 +42,6 @@ spring:
               git:
                 uri: https://github.com/xzhf/springcloud.git
                 search-paths: config
-                #username: xzhf
-                #password:
-              #配置开关true-开 false-关(使用git)
-              database: true
     #mysql config连接配置
     datasource:
         driver-class-name: com.mysql.jdbc.Driver
@@ -17,16 +49,14 @@ spring:
         max-idle: 10
         max-wait: 10000
         min-idle: 5
-        password: 123456
-        url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
-        username: root
-    jpa:
-        hibernate:
-            ddl-auto: update
 
 eureka:
   instance:
-    hostname: localhost
+     #配置访问client的host
+     hostname: ${spring.cloud.client.ipAddress}
+     #配置显示ip:port
+     instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+     prefer-ip-address: true
   client:
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:7002/eureka/
+      defaultZone: http://10.10.5.185:7002/eureka/
