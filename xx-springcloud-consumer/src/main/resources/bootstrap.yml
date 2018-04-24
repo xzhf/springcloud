@@ -7,11 +7,15 @@ spring:
         name: provider
         profile: dev
         label: master
-        uri: http://localhost:7000/configServer
+        uri: http://10.10.5.185:7000/configServer
 
 eureka:
   instance:
-    hostname: localhost
+    #配置访问client的host
+    hostname: ${spring.cloud.client.ipAddress}
+    #配置显示ip:port
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    prefer-ip-address: true
   client:
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:7002/eureka/
+      defaultZone: http://10.10.5.185:7002/eureka/
