@@ -45,6 +45,12 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zuul</artifactId>
         </dependency>
+        <!--json-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.17</version>
+        </dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -58,7 +64,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Brixton.SR5</version>
+                <version>Dalston.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

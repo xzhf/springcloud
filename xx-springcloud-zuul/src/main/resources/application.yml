@@ -5,10 +5,12 @@ server:
   port: 7006
 
 zuul:
+  #ignoredPatterns： /
   routes:
     consumer:
       path: /consumer/**
       #url: http://localhost:7004/consumer/
+      #url: forward:/xx
       serviceId: CONSUMER
       #是否去掉代理前缀（consumer）
       stripPrefix: false
