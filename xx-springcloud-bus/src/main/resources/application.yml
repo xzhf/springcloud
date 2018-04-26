@@ -1,0 +1,11 @@
+server:
+  context-path: /
+  port: 7007
+spring:
+  kafka:
+    bootstrap-servers: 10.10.5.186:9092
+    producer:
+      batch-size: 16384
+      buffer-memory: 33554432
+    template:
+      default-topic: springcloud-config-refresh

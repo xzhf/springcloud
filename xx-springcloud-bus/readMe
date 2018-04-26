@@ -1,0 +1,1 @@
+消息总线（kafka），接收到/config/refresh请求时，发送config refresh消息到中间件，提示config client刷新
