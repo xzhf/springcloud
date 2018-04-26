@@ -1,5 +1,9 @@
 server:
   context-path: /consumer
   port: 7004
-
+spring:
+  kafka:
+    bootstrap-servers: 10.10.5.186:9092
+    consumer:
+      group-id: springcloud-config-client
 
