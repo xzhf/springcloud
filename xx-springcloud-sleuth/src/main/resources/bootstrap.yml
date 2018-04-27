@@ -1,0 +1,21 @@
+#spring.cloud.config.env=default
+spring:
+  application:
+    name: sleuth
+  cloud:
+      config:
+        name: provider
+        profile: dev
+        label: master
+        uri: http://10.10.5.185:7000/configServer
+
+eureka:
+  instance:
+    #配置访问client的host
+    hostname: ${spring.cloud.client.ipAddress}
+    #配置显示ip:port
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://10.10.5.185:7002/eureka/
