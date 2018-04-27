@@ -19,3 +19,7 @@ zuul:
     max-total-connections: 200
     #每个路由连接数
     max-per-route-connections: 20
+spring:
+  zipkin:
+    base-url: http://localhost:7008
+
