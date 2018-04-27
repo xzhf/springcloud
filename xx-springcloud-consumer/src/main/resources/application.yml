@@ -6,4 +6,6 @@ spring:
     bootstrap-servers: 10.10.5.186:9092
     consumer:
       group-id: springcloud-config-client
+  zipkin:
+    base-url: http://localhost:7008
 
