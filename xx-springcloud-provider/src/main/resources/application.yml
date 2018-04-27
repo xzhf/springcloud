@@ -12,6 +12,8 @@ spring:
         profile: dev
         label: master
         uri: http://10.10.5.185:7000/configServer
+  zipkin:
+    base-url: http://localhost:7008
 
 eureka:
   instance:
