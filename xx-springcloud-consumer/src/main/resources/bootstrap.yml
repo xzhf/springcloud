@@ -1,3 +1,7 @@
+server:
+  context-path: /consumer
+  port: 7004
+
 #spring.cloud.config.env=default
 spring:
   application:
@@ -8,7 +12,6 @@ spring:
         profile: dev
         label: master
         uri: http://10.10.5.185:7000/configServer
-
 eureka:
   instance:
     #配置访问client的host
@@ -16,6 +19,10 @@ eureka:
     #配置显示ip:port
     instance-id: ${spring.cloud.client.ipAddress}:${server.port}
     prefer-ip-address: true
+    status-page-url-path: /consumer/info
+    metadata-map:
+      management.port: ${management.port:${server.port}}
+      cluster: ${cluster:CONSUMER}
   client:
     serviceUrl:
       defaultZone: http://10.10.5.185:7002/eureka/
