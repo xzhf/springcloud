@@ -1,0 +1,23 @@
+hystrix turbine服务
+
+1. TurbineLifecycle.start() turbine初始化入口，设置SpringAggregatorFactory（聚合工厂）、InstanceDiscovery（实例查找器）
+2. TurbineInit.init() 聚合初始化
+2.1 聚合工厂设置集群监视器 SpringAggregatorFactory.initClusterMonitors()
+2.1.1 遍历集群clusters，根据clusterName从registry中查找或注册监视器findOrRegisterAggregateMonitor(clusterName)
+2.1.1.1 解析配置turbine.aggregator.clusterConfig得到clusterName[]，为空=default, registry.get(clusterName + "_agg")
+2.1.1.2 如上一步结果返回空，初始化一个监视器new SpringClusterMonitor(clusterName + "_agg", clusterName)
+2.1.1.2.1 定义InstanceUrlClosure，读取配置组合实例url；首先获取turbine.instanceUrlSuffix.[clusterName]，为空默获取turbine.instanceUrlSuffix配置，默认值hystrix.stream
+2.1.1.2.2 定义实例观察者 instanceObservable 监视器管理员 monitorManager
+2.1.1.3 注册监视器到registry
+2.1.2 注册集群监视器的监听者，启动监视器 clusterMonitor.startMonitor()
+2.1.2.1 将 instanceObservable 注册到monitorManager（ observers.putIfAbsent(instanceObservable.getName(), instanceObservable) ）
+2.2 实例观察者进行实例监控InstanceObservable.start(InstanceDiscovery)
+2.2.1 启动定时器，定时执行监控 timer.schedule(producer, 0, pollDelayMillis.get())
+2.2.1.1 获取所有实例Instance CommonsInstanceDiscovery.getInstanceList()
+2.2.1.1.1 解析turbine.appConfig配置得到eureka serviceId[]，discoveryClient.getInstances(serviceId)获取List<ServiceInstance>，遍历转换成List<Instance> CommonsInstanceDiscovery.getInstancesForApp(serviceId)
+2.2.1.1.1.1 解析ServiceInstance，获取eureka client中配置eureka.instance.metadata-map中management.port
+2.2.1.1.1.2 解析clusterName，根据turbine.clusterNameExpression配置规则解析
+2.2.1.1.1.2.1 不填默认为serviceId
+2.2.1.1.1.2.2 metadata['key']表示获取对应eureka instance配置的eureka.instance.metadata-map.key= ${key: consumer}
+2.2.1.2 处理所有Instance的状态
+2.2.1.2 遍历观察者observers，根据up状态请求instance的hystrix.stream，最后调用在InstanceMonitor.startMonitor()，通过httpGet(urlClosure.getUrlPath(host))
