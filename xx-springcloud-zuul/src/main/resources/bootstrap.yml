@@ -16,6 +16,10 @@ eureka:
     #配置显示ip:port
     instance-id: ${spring.cloud.client.ipAddress}:${server.port}
     prefer-ip-address: true
+    status-page-url-path: /zuul/info
+    metadata-map:
+          management.port: ${management.port:${server.port}}
+          cluster: ${cluster:ZUUL}
   client:
     serviceUrl:
       defaultZone: http://10.10.5.185:7002/eureka/
